@@ -25,7 +25,7 @@ def extract_next_links(url, resp):
 
         links.append(defragged)
 
-    return list()
+    return links
 
 def is_valid(url):
     # Decide whether to crawl this url or not. 
