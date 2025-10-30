@@ -30,7 +30,8 @@ def extract_next_links(url, resp):
 
     # create the report before checks
     unique_urls.add(url)
-    highest_words(resp.url, words)
+    report_highest_words(resp.url, words)
+    report_uci_subdomain(resp.url)
 
     if is_trap(resp.url, traps): return []
     if page_too_large(resp): return []

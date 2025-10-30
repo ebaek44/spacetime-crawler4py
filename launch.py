@@ -1,11 +1,11 @@
 import multiprocessing
+import signal  # ⭐ ADD THIS
 from configparser import ConfigParser
 from argparse import ArgumentParser
 
 from utils.server_registration import get_cache_server
 from utils.config import Config
 from crawler import Crawler
-
 
 def main(config_file, restart):
     cparser = ConfigParser()
@@ -15,10 +15,12 @@ def main(config_file, restart):
     crawler = Crawler(config, restart)
     crawler.start()
 
-
 if __name__ == "__main__":
-    # IMPORTANT: apparently I need this for mac?
-    multiprocessing.set_start_method('fork', force=True) 
+    multiprocessing.set_start_method('fork', force=True)
+    
+    # ⭐ ADD THESE 2 LINES
+    signal.signal(signal.SIGINT, lambda sig, frame: (write_report(), exit(0)))
+    from report_helpers import write_report  # Import here for the lambda
     
     parser = ArgumentParser()
     parser.add_argument("--restart", action="store_true", default=False)
