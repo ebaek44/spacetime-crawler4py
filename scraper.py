@@ -2,6 +2,10 @@ from urllib.parse import urlparse, urljoin, urldefrag
 from bs4 import BeautifulSoup
 from validate_url_helpers import *
 from validate_html_helpers import *
+from report_helpers import unique_urls
+
+
+traps = set(['ics.uci.edu/~eppstein/pix','isg.ics.uci.edu/events'])
 
 
 def scraper(url, resp):
@@ -20,7 +24,7 @@ def extract_next_links(url, resp):
     except:
         return []
     links = []
-    traps = set(['ics.uci.edu/~eppstein/pix','isg.ics.uci.edu/events'])
+
 
     if is_trap(resp.url, traps): return []
     if page_too_large(resp): return []
@@ -32,6 +36,7 @@ def extract_next_links(url, resp):
         absolute = urljoin(url, link['href']) # combine relative link to make absolute
         defragged, _ = urldefrag(absolute) # defrag the link (as said in instructions)
         links.append(defragged)
+        unique_urls.add(defragged)
 
     return links
 
