@@ -12,6 +12,8 @@ def extract_next_links(url, resp):
         print(resp.error)
         return []
     
+    if page_too_large(resp): return False
+    
     # extract text from html
     try:
         soup = BeautifulSoup(resp.raw_response.content, 'html.parser')
@@ -19,7 +21,7 @@ def extract_next_links(url, resp):
         return []
     links = []
 
-    if not page_valuable(soup): return False
+    if page_low_content(soup): return False
 
     # find all links in the html
     for link in soup.find_all('a', href=True):
