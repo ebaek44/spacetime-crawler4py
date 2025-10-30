@@ -6,6 +6,9 @@ highest_word = 0
 highest_word_url = ""
 uci_subdomains = {}
 
+# TEST
+repeated_paths = {}
+
 def write_report():
     # write report at the end of the scrapers run
     with open('report.txt', 'w') as f:
@@ -20,6 +23,14 @@ def write_report():
             subdomain_result.append(subdomain[0])
             subdomain_result.append(subdomain[1])
         f.write(f"Subdomains sorted with frequency: {subdomain_result} \n")
+
+        # TEST: repeated paths
+        sorted_repeated_paths = sorted(list(repeated_paths.items()), key=lambda x : x[1])
+        repeated_path_result = []
+        for repeated_path in repeated_paths:
+            repeated_path_result.append(repeated_path[0])
+            repeated_path_result.append(repeated_path[1])
+        f.write(f"TEST: Repeated Paths sorted with frequency: {repeated_path_result} \n")
         f.write("\n")
 
 

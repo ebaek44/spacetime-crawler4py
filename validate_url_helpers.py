@@ -1,5 +1,6 @@
 import re
 from urllib.parse import urlparse
+from report_helpers import repeated_paths
 
 def is_trap(url, traps):
     # if a pattern of url keeps showing up over 100 times, its probably a trap.
@@ -14,14 +15,20 @@ def is_trap(url, traps):
     for page in path:
         url_pattern.append(page)
 
+    # TEST
     if len(url_pattern)>1:
-        print(parsed.netloc + '/' + url_pattern[1])
+        p = parsed.netloc + '/' + url_pattern[1]
+        repeated_paths[p] = repeated_paths.get(p, 0) + 1
     if len(url_pattern)>2:
-        print(parsed.netloc + '/' + url_pattern[1] + '/' + url_pattern[2])
+        p = parsed.netloc + '/' + url_pattern[1] + '/' + url_pattern[2]
+        repeated_paths[p] = repeated_paths.get(p, 0) + 1
+    # TEST, check if you are in trap
+    if len(url_pattern)>1 and repeated_paths[p] > 300:
+        return True
 
-    # url_count[pattern] = traps.get(pattern, 0) + 1
     if parsed.netloc in traps or (len(url_pattern)>1 and parsed.netloc + '/' + url_pattern[1] in traps) or (len(url_pattern)>2 and parsed.netloc + '/' + url_pattern[1] + '/' + url_pattern[2] in traps):
         return True
+
     return False
 
 

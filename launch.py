@@ -1,5 +1,5 @@
 import multiprocessing
-import signal  # ⭐ ADD THIS
+import signal
 from configparser import ConfigParser
 from argparse import ArgumentParser
 
@@ -18,9 +18,9 @@ def main(config_file, restart):
 if __name__ == "__main__":
     multiprocessing.set_start_method('fork', force=True)
     
-    # ⭐ ADD THESE 2 LINES
+    # so that i can cancel run and still print report 
     signal.signal(signal.SIGINT, lambda sig, frame: (write_report(), exit(0)))
-    from report_helpers import write_report  # Import here for the lambda
+    from report_helpers import write_report
     
     parser = ArgumentParser()
     parser.add_argument("--restart", action="store_true", default=False)
