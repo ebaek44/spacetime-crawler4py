@@ -1,6 +1,7 @@
 from urllib.parse import urlparse, urljoin, urldefrag
 from bs4 import BeautifulSoup
 from validate_url_helpers import *
+from validate_html_helpers import *
 
 def scraper(url, resp):
     links = extract_next_links(url, resp)
@@ -18,18 +19,12 @@ def extract_next_links(url, resp):
         return []
     links = []
 
-    # check if page is valuable
-    text = soup.get_text()
-    words = text.split()
-    if len(words) < 100:
-        return []
+    if not page_valuable(soup): return False
 
     # find all links in the html
     for link in soup.find_all('a', href=True):
-        # combine relative link to make absolute
-        absolute = urljoin(url, link['href'])
-        # defrag the link (as said in instructions)
-        defragged, _ = urldefrag(absolute)
+        absolute = urljoin(url, link['href']) # combine relative link to make absolute
+        defragged, _ = urldefrag(absolute) # defrag the link (as said in instructions)
         links.append(defragged)
 
     return links
