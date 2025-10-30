@@ -25,7 +25,7 @@ def write_report():
         f.write(f"Subdomains sorted with frequency: {subdomain_result} \n")
 
         # TEST: repeated paths
-        sorted_repeated_paths = sorted(list(repeated_paths.items()), key=lambda x : x[1])
+        sorted_repeated_paths = sorted(list(repeated_paths.items()), key=lambda x : -x[1])
         f.write(f"TEST: Repeated Paths sorted with frequency: {sorted_repeated_paths} \n")
         f.write("\n")
 
