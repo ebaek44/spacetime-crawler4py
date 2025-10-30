@@ -11,10 +11,8 @@ def scraper(url, resp):
 
 def extract_next_links(url, resp):
     if resp.status != 200:
-        print(resp.error)
+        print("Error:", resp.error)
         return []
-    
-    if page_too_large(resp): return False
     
     # extract text from html
     try:
@@ -22,8 +20,12 @@ def extract_next_links(url, resp):
     except:
         return []
     links = []
+    traps = set(['ics.uci.edu/~eppstein/pix','isg.ics.uci.edu/events'])
 
-    if page_low_content(soup): return False
+    if is_trap(resp.url, traps): return []
+    if page_too_large(resp): return []
+    if page_low_content(resp, soup): return []
+    
 
     # find all links in the html
     for link in soup.find_all('a', href=True):
