@@ -1,5 +1,7 @@
 import time 
 from urllib.parse import urlparse
+from collections import Counter
+import re
 
 unique_urls = set()
 highest_word = 0
