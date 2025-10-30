@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 from validate_url_helpers import *
 
 def scraper(url, resp):
-    print('Scraper Called')
     links = extract_next_links(url, resp)
     return [link for link in links if is_valid(link)]
 
@@ -12,9 +11,20 @@ def extract_next_links(url, resp):
         print(resp.error)
         return []
     
-    soup = BeautifulSoup(resp.raw_response.content, 'html.parser')
+    # extract text from html
+    try:
+        soup = BeautifulSoup(resp.raw_response.content, 'html.parser')
+    except:
+        return []
     links = []
 
+    # check if page is valuable
+    text = soup.get_text()
+    words = text.split()
+    if len(words) < 100:
+        return []
+
+    # find all links in the html
     for link in soup.find_all('a', href=True):
         # combine relative link to make absolute
         absolute = urljoin(url, link['href'])
