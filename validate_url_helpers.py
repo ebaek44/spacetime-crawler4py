@@ -25,7 +25,7 @@ def is_trap(url, traps):
     if len(url_pattern)>1 and repeated_paths[p] > 300:
         return True
 
-    if any(url.startswith(domain) for domain in traps):
+    if any(url in (domain) for domain in traps):
         print(url)
         return True
 
