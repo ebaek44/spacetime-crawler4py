@@ -9,13 +9,12 @@ def is_trap(url, traps):
     # do i do only the first path or second path too?
     parsed = urlparse(url)
 
+    # TEST
     path = parsed.path.split('/')
     path.pop(0)
     url_pattern = [parsed.netloc]
     for page in path:
         url_pattern.append(page)
-
-    # TEST
     if len(url_pattern)>1:
         p = parsed.netloc + '/' + url_pattern[1]
         repeated_paths[p] = repeated_paths.get(p, 0) + 1
@@ -26,7 +25,8 @@ def is_trap(url, traps):
     if len(url_pattern)>1 and repeated_paths[p] > 300:
         return True
 
-    if parsed.netloc in traps or (len(url_pattern)>1 and parsed.netloc + '/' + url_pattern[1] in traps) or (len(url_pattern)>2 and parsed.netloc + '/' + url_pattern[1] + '/' + url_pattern[2] in traps):
+    if any(url.startswith(domain) for domain in traps):
+        print(url)
         return True
 
     return False
