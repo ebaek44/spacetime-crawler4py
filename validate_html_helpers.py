@@ -1,7 +1,5 @@
-def page_low_content(resp, soup):
+def page_low_content(resp, soup, words):
     # page not enough words
-    text = soup.get_text()
-    words = text.split()
     if len(words) < 100 or len(str(soup)) < 500:
         return True
     elif len(resp.raw_response.content) > 1_000_000:

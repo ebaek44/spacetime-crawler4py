@@ -2,6 +2,7 @@ from urllib.parse import urlparse, urljoin, urldefrag
 from bs4 import BeautifulSoup
 from validate_url_helpers import *
 from validate_html_helpers import *
+from report_helpers import *
 from report_helpers import unique_urls
 
 
@@ -24,11 +25,16 @@ def extract_next_links(url, resp):
     except:
         return []
     links = []
+    text = soup.get_text()
+    words = text.split()
 
+    # create the report before checks
+    unique_urls.add(url)
+    highest_words(resp.url, words)
 
     if is_trap(resp.url, traps): return []
     if page_too_large(resp): return []
-    if page_low_content(resp, soup): return []
+    if page_low_content(resp, soup, words): return []
     
 
     # find all links in the html
@@ -36,7 +42,6 @@ def extract_next_links(url, resp):
         absolute = urljoin(url, link['href']) # combine relative link to make absolute
         defragged, _ = urldefrag(absolute) # defrag the link (as said in instructions)
         links.append(defragged)
-        unique_urls.add(defragged)
 
     return links
 
