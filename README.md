@@ -3,6 +3,8 @@ ABOUT
 This is the base implementation of a full crawler that uses a spacetime
 cache server to receive requests.
 
+https://docs.google.com/document/d/1cX6W92CV4dMtNZdS5vsCzgy1loZw0ACj7R2svUa-NKM/edit?tab=t.0
+
 CONFIGURATION
 -------------------------
 

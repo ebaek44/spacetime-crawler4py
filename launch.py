@@ -17,7 +17,7 @@ def main(config_file, restart):
 
 
 if __name__ == "__main__":
-    # apparently I need this for mac?
+    # IMPORTANT: apparently I need this for mac?
     multiprocessing.set_start_method('fork', force=True) 
     
     parser = ArgumentParser()
