@@ -30,6 +30,7 @@ class Worker(Thread):
             if self.pw:
                 # If the url has already been seen continue to the next iteration
                 if self.pw.seen_url(tbd_url):
+                    self.frontier.mark_url_complete(tbd_url)
                     continue
                 
                 # Else respect the politeness delay

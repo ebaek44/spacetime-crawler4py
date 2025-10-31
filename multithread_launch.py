@@ -43,10 +43,5 @@ if __name__ == "__main__":
     parser = ArgumentParser()
     parser.add_argument("--restart", action="store_true", default=False)
     parser.add_argument("--config_file", type=str, default="config.ini")
-    parser.add_argument("--workers", type=int, default=4)
     args = parser.parse_args()
-    main(args.config_file, args.restart, args.workers)
-
-    # HOW TO RUN: python3 multithread_launch.py --workers 2
-    # Change that 2 with any number for the amount of multithread workers you want
-
+    main(args.config_file, args.restart)

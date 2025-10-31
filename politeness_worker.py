@@ -27,10 +27,9 @@ class PolitenessWorker(Thread):
     def seen_url(self, url: str) -> bool:
         with self.lock:
             if url in self.visited:
-                return False
-            else:
-                self.visited.add(url)
                 return True
+            self.visited.add(url)
+            return False
     
     def politeness_delay(self, url):
         domain = urlparse(url).netloc

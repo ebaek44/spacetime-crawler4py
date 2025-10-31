@@ -26,6 +26,7 @@ class Frontier(object):
             self.logger.info(
                 f"Found save file {self.config.save_file}, deleting it.")
             os.remove(self.config.save_file)
+            
         # Load existing save file, or create one if it does not exist.
         self.save = shelve.open(self.config.save_file)
         if seed_ind == -1:
@@ -63,6 +64,7 @@ class Frontier(object):
             return self.to_be_downloaded.pop()
         except IndexError:
             return None
+
     def add_url(self, url):
         with self.save_lock:  # ADD THIS LINE
             url = normalize(url)
