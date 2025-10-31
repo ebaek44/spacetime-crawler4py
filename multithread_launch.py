@@ -10,13 +10,14 @@ from crawler import Crawler
 from crawler.frontier import Frontier
 from crawler.worker import Worker
 
-def main(config_file, restart, workers=4):
+def main(config_file, restart):
     cparser = ConfigParser()
     cparser.read(config_file)
     config = Config(cparser)
     config.cache_server = get_cache_server(config, restart)
 
     threads = []
+    workers = min(config.threads_count, 4)
     # Name each worker seperatly and then 
     for i in range(workers):
         # each worker builds its own Frontier
