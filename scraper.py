@@ -10,7 +10,6 @@ traps = ["redirect", "?entry_point", "timeline", "/r.php", "?version=",
 "?action=diff", "?format=", "week", "month", "year"]
 
 
-
 def scraper(url, resp):
     links = extract_next_links(url, resp)
     return [link for link in links if is_valid(link)]
@@ -33,9 +32,9 @@ def extract_next_links(url, resp):
 
     # create the report before checks
     unique_urls.add(url)
-    report_highest_words(resp.url, cleaned_words)
+    report_highest_words(url, words)
     report_common_words(cleaned_words)
-    report_uci_subdomain(resp.url)
+    report_uci_subdomain(url)
 
 
     if page_too_large(resp): return []

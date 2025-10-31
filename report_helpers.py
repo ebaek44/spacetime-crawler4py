@@ -60,7 +60,7 @@ def report_common_words(clean_words):
 def report_uci_subdomain(url):
     parsed = urlparse(url)
     domain = parsed.netloc.split('.')
-    if len(domain) >= 2 and domain[-1] == 'edu' and domain[-2] == 'uci':
+    if len(domain) > 2 and domain[-1] == 'edu' and domain[-2] == 'uci':
         # then it is a subdomain
         uci_subdomains[parsed.netloc] = uci_subdomains.get(parsed.netloc, 0) + 1
 
