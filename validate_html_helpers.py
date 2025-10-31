@@ -9,10 +9,10 @@ def page_low_content(resp, soup, words):
         return True
     
     # page not enough words
-    if len(words) < 100 or len(str(soup)) < 500:
+    if len(words) < 50 or len(str(soup)) < 500:
         add_little_information(resp)
         return True
-    elif len(resp.raw_response.content) > 1_000_000:
+    elif len(resp.raw_response.content) > 1000000:
         if len(words) < 500:
             add_little_information(resp)
             return True
@@ -22,11 +22,14 @@ def page_low_content(resp, soup, words):
 
 def page_too_large(resp):
     content = resp.raw_response.content
-    if len(content) > 10_000_000:
+    if len(content) > 2500000:
         return True
 
     return False
 
+
+
+# these functions are to process patterns in urls
 
 def is_blocked_pattern(url):
     pattern = get_pattern_from_url(url)
