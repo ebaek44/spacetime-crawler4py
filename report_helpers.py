@@ -22,6 +22,7 @@ def write_report():
         
         # write top 50 most common words
         top_50 = word_frequencies.most_common(50)
+        f.write(f"Highest 50 Words:")
         for rank, (word, freq) in enumerate(top_50, 1):
             f.write(f"{rank}. {word}: {freq}\n")
 

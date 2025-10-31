@@ -2,7 +2,7 @@ from urllib.parse import urlparse
 from collections import defaultdict
 
 little_information = defaultdict(int)
-THRESHOLD = 3  # block pattern after 3 low-info pages found
+THRESHOLD = 4  # block pattern after 3 low-info pages found
 
 def page_low_content(resp, soup, words):
     if is_blocked_pattern(resp.url):
@@ -11,9 +11,11 @@ def page_low_content(resp, soup, words):
     # page not enough words
     if len(words) < 50 or len(str(soup)) < 500:
         add_little_information(resp)
+        print('too small, less than 50 words')
         return True
     elif len(resp.raw_response.content) > 1000000:
         if len(words) < 500:
+            print('too large file and not enough words')
             add_little_information(resp)
             return True
 
@@ -23,6 +25,7 @@ def page_low_content(resp, soup, words):
 def page_too_large(resp):
     content = resp.raw_response.content
     if len(content) > 2500000:
+        print('file too big!')
         return True
 
     return False
