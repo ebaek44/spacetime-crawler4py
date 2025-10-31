@@ -9,12 +9,16 @@ from utils.config import Config
 from crawler import Crawler
 from crawler.frontier import Frontier
 from crawler.worker import Worker
+from politeness_worker import PolitenessWorker
 
 def main(config_file, restart):
     cparser = ConfigParser()
     cparser.read(config_file)
     config = Config(cparser)
     config.cache_server = get_cache_server(config, restart)
+
+    # create the politeness worker to manage all 4 workers
+    pw = PolitenessWorker(config)
 
     threads = []
     workers = min(config.threads_count, 4)
@@ -23,7 +27,7 @@ def main(config_file, restart):
         # each worker builds its own Frontier
         f = Frontier(config, restart, i)
         f.config.save_file = f"frontier_{i}.shelve"
-        w = Worker(i, config, f)
+        w = Worker(i, config, f, pw)
         w.start()
         threads.append(w)
 

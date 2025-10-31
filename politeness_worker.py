@@ -5,7 +5,7 @@ from urllib.parse import urlparse
 
 POLITENESS_DELAY = 0.5 # 500 milleseconds
 
-class PolitnessWorker(Thread):
+class PolitenessWorker(Thread):
     """
     This is the global worker for multithreading that will make sure the crawlers respect politeness and dont revisit the same url
     """
