@@ -9,6 +9,7 @@ def is_trap(url, traps):
     # do i do only the first path or second path too?
     parsed = urlparse(url)
 
+
     # TEST
     path = parsed.path.split('/')
     path.pop(0)

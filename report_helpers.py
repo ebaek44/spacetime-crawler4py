@@ -1,13 +1,17 @@
 import time 
 from urllib.parse import urlparse
+from collections import Counter
+import re
 
 unique_urls = set()
 highest_word = 0
 highest_word_url = ""
+word_frequencies = Counter()
 uci_subdomains = {}
 
 # TEST
 repeated_paths = {}
+
 
 def write_report():
     # write report at the end of the scrapers run
@@ -16,6 +20,11 @@ def write_report():
         f.write(f"Unique pages found: {len(unique_urls)} \n")
         f.write(f"Highest words: {highest_word} from {highest_word_url}\n")
         
+        # write top 50 most common words
+        top_50 = word_frequencies.most_common(50)
+        for rank, (word, freq) in enumerate(top_50, 1):
+            f.write(f"{rank}. {word}: {freq}\n")
+
         # subdomains
         sorted_subdomains = sorted(list(uci_subdomains.items()), key=lambda x : x[0])
         subdomain_result = []
@@ -37,6 +46,13 @@ def report_highest_words(url, words):
         highest_word = len(words)
         highest_word_url = url
         print(highest_word)
+
+
+def report_common_words(clean_words):
+    # count word frequencies
+    global word_frequencies
+    for word in clean_words:
+        word_frequencies[word] += 1
 
 
 def report_uci_subdomain(url):
