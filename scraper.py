@@ -6,7 +6,7 @@ from report_helpers import *
 from report_helpers import unique_urls
 
 
-traps = set(['ics.uci.edu/~eppstein/pix','isg.ics.uci.edu/events', 'http://swiki.ics.uci.edu/doku.php/network:campus:campusvpn', 'http://swiki.ics.uci.edu/doku.php/security'])
+traps = set(['ics.uci.edu/~eppstein/pix','isg.ics.uci.edu/events', 'http://swiki.ics.uci.edu/doku.php/network:campus:campusvpn', 'http://swiki.ics.uci.edu/doku.php/security', 'https://grape.ics.uci.edu/wiki/public/timeline', 'https://dynamo.ics.uci.edu/files/zImage_paapi'])
 
 
 def scraper(url, resp):
