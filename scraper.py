@@ -33,6 +33,10 @@ def extract_next_links(url, resp):
     report_highest_words(resp.url, words)
     report_uci_subdomain(resp.url)
 
+    # find 
+    process_words(words)
+
+
     if is_trap(resp.url, traps): return []
     if page_too_large(resp): return []
     if page_low_content(resp, soup, words): return []
