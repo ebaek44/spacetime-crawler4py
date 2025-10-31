@@ -27,7 +27,6 @@ def is_trap(url, traps):
         return True
 
     if any(domain in url for domain in traps):
-        print(url)
         return True
 
     return False

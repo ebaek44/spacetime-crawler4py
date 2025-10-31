@@ -2,6 +2,7 @@ import time
 from urllib.parse import urlparse
 from collections import Counter
 import re
+from validate_html_helpers import little_information
 
 unique_urls = set()
 highest_word = 0
@@ -37,16 +38,16 @@ def write_report():
         # TEST: repeated paths
         sorted_repeated_paths = sorted(list(repeated_paths.items()), key=lambda x : -x[1])
         f.write(f"TEST: Repeated Paths sorted with frequency: {sorted_repeated_paths} \n")
+        f.write(f"TEST: blacklisted domains with little info: {[(domain, little_information[domain]) for domain in little_information if little_information[domain] >= 4]} \n")
         f.write("\n")
 
 
 def report_highest_words(url, words):
     # always keep track of highest word count of html website
     global highest_word, highest_word_url
-    if len(words) > highest_word:
+    if words and len(words) > highest_word:
         highest_word = len(words)
         highest_word_url = url
-        print(highest_word)
 
 
 def report_common_words(clean_words):

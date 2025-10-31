@@ -28,7 +28,7 @@ def extract_next_links(url, resp):
         return []
     links = []
     text = soup.get_text()
-    words = text.split()
+    words = text.split() if text else []
     cleaned_words = clean_words(words)
 
     # create the report before checks
@@ -39,7 +39,7 @@ def extract_next_links(url, resp):
 
 
     if page_too_large(resp): return []
-    if page_low_content(resp, soup, cleaned_words): return []
+    if page_low_content(resp, soup, words): return []
     
 
     # find all links in the html
@@ -97,4 +97,4 @@ def clean_words(words):
         if clean_word and clean_word not in STOP_WORDS and not clean_word.isdigit():
             if len(clean_word) > 1:
                 cleaned_words.append(clean_word)
-        return cleaned_words
+    return cleaned_words
