@@ -9,6 +9,7 @@ def is_trap(url, traps):
     # do i do only the first path or second path too?
     parsed = urlparse(url)
 
+
     # TEST
     path = parsed.path.split('/')
     path.pop(0)
@@ -24,6 +25,7 @@ def is_trap(url, traps):
     # TEST, check if you are in trap
     if len(url_pattern)>1 and repeated_paths[p] > 300:
         return True
+
 
     if any(url in (domain) for domain in traps):
         print(url)

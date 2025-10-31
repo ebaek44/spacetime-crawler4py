@@ -5,7 +5,10 @@ from validate_html_helpers import *
 from report_helpers import *
 
 
-traps = set(['ics.uci.edu/~eppstein/pix','isg.ics.uci.edu/events', 'http://swiki.ics.uci.edu/doku.php/network:campus:campusvpn', 'http://swiki.ics.uci.edu/doku.php/security'])
+traps = ["redirect", "?entry_point", "timeline", "/r.php", "?version=", 
+"~eppstein/pix", "login", "calendar", "eppstein/pix", "/events/", "ngs.ics", "/doku", "mediamanager.php", 
+"?action=diff", "?format=", "week", "month", "year"]
+
 
 
 def scraper(url, resp):
@@ -35,7 +38,6 @@ def extract_next_links(url, resp):
     report_uci_subdomain(resp.url)
 
 
-    if is_trap(resp.url, traps): return []
     if page_too_large(resp): return []
     if page_low_content(resp, soup, cleaned_words): return []
     
@@ -53,6 +55,8 @@ def is_valid(url):
     # Decide whether to crawl this url or not. 
     try:
         parsed = urlparse(url)
+
+        if is_trap(url, traps): return False
         if not validate_scheme(parsed): return False
         if not validate_domain(parsed): return False
         
