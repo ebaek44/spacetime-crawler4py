@@ -34,16 +34,19 @@ class PolitenessWorker(Thread):
     def politeness_delay(self, url):
         domain = urlparse(url).netloc
         with self.lock:
-            # grab the last visit
             last_visit = self.polite_map.get(domain, 0)
             now = time.time()
             diff = now - last_visit
             wait_time = self.config.time_delay - diff
 
-            # If the domain hasnt been visited or its been more than 0.5 secs then its safe to crawl
             if wait_time <= 0:
+                # Can visit immediately
                 self.polite_map[domain] = now
                 return
-        # Else we will wait for the remaining politeness delay
-        # Keep this outside the lock so other workers can call the function when the worker is sleeping
+            
+            # Reserve the next available slot for this domain
+            # This prevents other threads from scheduling at the same time
+            self.polite_map[domain] = last_visit + self.config.time_delay
+        
+        # Now sleep outside the lock - but the domain is already "reserved"
         time.sleep(wait_time)

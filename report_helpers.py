@@ -26,9 +26,8 @@ def write_report():
         sorted_subdomains = sorted(list(uci_subdomains.items()), key=lambda x : -x[1])
         subdomain_result = []
         for subdomain in sorted_subdomains:
-            subdomain_result.append(subdomain[0])
-            subdomain_result.append(subdomain[1])
-        f.write(f"Subdomains sorted with frequency: \n")
+            subdomain_result.append((subdomain[0], subdomain[1]))
+        f.write(f"\nSubdomains sorted with frequency: \n\n")
         for subdomain in subdomain_result:
             f.write(f"{subdomain[0]}: {subdomain[1]} \n")
             

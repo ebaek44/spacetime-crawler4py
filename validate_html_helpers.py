@@ -16,7 +16,7 @@ def page_low_content(resp, soup, words):
         add_little_information(resp)
         print('too small, less than 50 words')
         return True
-    elif len(resp.raw_response.content) > MAX_FILE_SIZE_BYTES:
+    elif len(resp.raw_response.content) > 1_000_000:
         if len(words) < 300:
             print('too large file and not enough words')
             add_little_information(resp)
@@ -27,7 +27,7 @@ def page_low_content(resp, soup, words):
 
 def page_too_large(resp):
     content = resp.raw_response.content
-    if len(content) > 2500000:
+    if len(content) > 2_500_000:
         print('file too big!')
         return True
 
@@ -66,10 +66,9 @@ def get_pattern_from_url(url):
 
 def make_ngrams(words):
     # 5 grams
-    words = text.split()
     chunks = []
-    for i in range(len(words) + 4):
-        chunk = " ".join(words[i:i+size])
+    for i in range(len(words) - 4):
+        chunk = " ".join(words[i:i+5])
         chunks.append(chunk)
     return chunks
 
@@ -80,7 +79,7 @@ def randomize_ngrams(items):
     return items[:100]
 
 def hash_chunks(chunks):
-    chosen = randomize_ngrams(chunks, 100)
+    chosen = randomize_ngrams(chunks)
     result = []
     for c in chosen:
         hashed = hashlib.sha256(c.encode()).hexdigest()
@@ -97,7 +96,7 @@ def check_similar(hashes):
         if h in seen_fingerprints:
             similar += 1
     score = similar / len(hashes)
-    return score > threshold
+    return score > 0.9
 
 def add_all_hashes(hashes):
     for h in hashes:
@@ -108,7 +107,7 @@ def page_too_similar(words):
     hashed = hash_chunks(ngrams)
 
     if not check_similar(hashed):
-        add_hashes(hashed)
+        add_all_hashes(hashed)
         # good
         return False
 

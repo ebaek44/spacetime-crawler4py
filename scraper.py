@@ -16,6 +16,8 @@ traps = [
     "https://ics.uci.edu/events/category/student-experience/list/?tribe-bar-date",
     "https://isg.ics.uci.edu/events",
     "https://grape.ics.uci.edu/wiki/public/raw-attachment"
+    "https://www.ics.uci.edu/~eppstein",
+    
 ]
 
 
