@@ -3,9 +3,9 @@ from collections import defaultdict
 import re
 import hashlib
 
-little_information = defaultdict(int)
+little_information = defaultdict(lambda: {'low': 0, 'total': 0})
 seen_fingerprints = set()
-THRESHOLD = 10  # block pattern after low-info pages found
+MAX_BLOCKED_RATIO = 0.8  # block if 80% are low-content
 
 def page_low_content(resp, soup, words):
     if is_blocked_pattern(resp.url):
@@ -13,15 +13,16 @@ def page_low_content(resp, soup, words):
     
     # page not enough words
     if len(words) < 50:
-        add_little_information(resp)
+        add_little_information(resp, is_low=True)
         print('too small, less than 50 words')
         return True
     elif len(resp.raw_response.content) > 1_000_000:
         if len(words) < 300:
             print('too large file and not enough words')
-            add_little_information(resp)
+            add_little_information(resp, is_low=True)
             return True
 
+    add_little_information(resp, is_low=False)
     return False
 
 
@@ -39,13 +40,19 @@ def page_too_large(resp):
 
 def is_blocked_pattern(url):
     pattern = get_pattern_from_url(url)
-    return little_information[pattern] >= THRESHOLD
+    stats = little_information[pattern]
+    
+    # block if ration of low to total is too high
+    ratio = stats['low'] / stats['total']
+    return ratio >= MAX_BLOCKED_RATIO
 
 
-def add_little_information(resp):
+def add_little_information(resp, is_low):
     url = resp.url
     pattern = get_pattern_from_url(url)
-    little_information[pattern] += 1
+    little_information[pattern]['total'] += 1
+    if is_low:
+        little_information[pattern]['low'] += 1
 
 
 def get_pattern_from_url(url):
