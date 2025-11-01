@@ -1,4 +1,3 @@
-import time 
 from urllib.parse import urlparse
 from collections import Counter
 import re
@@ -10,36 +9,29 @@ highest_word_url = ""
 word_frequencies = Counter()
 uci_subdomains = {}
 
-# TEST
-repeated_paths = {}
-
 
 def write_report():
     # write report at the end of the scrapers run
     with open('report.txt', 'w') as f:
-        f.write(f"{str(int(time.time()))}\n")
-        f.write(f"Unique pages found: {len(unique_urls)} \n")
-        f.write(f"Highest words: {highest_word} from {highest_word_url}\n")
+        f.write(f"Unique pages found: {len(unique_urls)} \n \n \n")
+        f.write(f"Highest words: {highest_word} from {highest_word_url}\n \n \n")
         
         # write top 50 most common words
-        top_50 = word_frequencies.most_common(50)
-        f.write(f"Highest 50 Words:")
+        top_50 = word_frequencies.most_common(100)
+        f.write(f"Highest 100 Words:\n")
         for rank, (word, freq) in enumerate(top_50, 1):
             f.write(f"{rank}. {word}: {freq}\n")
 
         # subdomains
-        sorted_subdomains = sorted(list(uci_subdomains.items()), key=lambda x : x[0])
+        sorted_subdomains = sorted(list(uci_subdomains.items()), key=lambda x : -x[1])
         subdomain_result = []
         for subdomain in sorted_subdomains:
             subdomain_result.append(subdomain[0])
             subdomain_result.append(subdomain[1])
-        f.write(f"Subdomains sorted with frequency: {subdomain_result} \n")
-
-        # TEST: repeated paths
-        sorted_repeated_paths = sorted(list(repeated_paths.items()), key=lambda x : -x[1])
-        f.write(f"TEST: Repeated Paths sorted with frequency: {sorted_repeated_paths} \n")
-        f.write(f"TEST: blacklisted domains with little info: {[(domain, little_information[domain]) for domain in little_information if little_information[domain] >= 4]} \n")
-        f.write("\n")
+        f.write(f"Subdomains sorted with frequency: \n")
+        for subdomain in subdomain_result:
+            f.write(f"{subdomain[0]}: {subdomain[1]} \n")
+            
 
 
 def report_highest_words(url, words):

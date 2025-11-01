@@ -1,30 +1,11 @@
 import re
 from urllib.parse import urlparse
-from report_helpers import repeated_paths
 
 def is_trap(url, traps):
     # if a pattern of url keeps showing up over 100 times, its probably a trap.
     # interesting to find the number of what considers it a trap. 
     # need to run to see the numbers
     # do i do only the first path or second path too?
-    parsed = urlparse(url)
-
-
-    # TEST
-    path = parsed.path.split('/')
-    path.pop(0)
-    url_pattern = [parsed.netloc]
-    for page in path:
-        url_pattern.append(page)
-    if len(url_pattern)>1:
-        p = parsed.netloc + '/' + url_pattern[1]
-        repeated_paths[p] = repeated_paths.get(p, 0) + 1
-    if len(url_pattern)>2:
-        p = parsed.netloc + '/' + url_pattern[1] + '/' + url_pattern[2]
-        repeated_paths[p] = repeated_paths.get(p, 0) + 1
-    # TEST, check if you are in trap
-    if len(url_pattern)>1 and repeated_paths[p] > 300:
-        return True
 
     if any(domain in url for domain in traps):
         return True
@@ -62,5 +43,6 @@ def base_validates(parsed):
         + r"|data|dat|exe|bz2|tar|msi|bin|7z|psd|dmg|iso"
         + r"|epub|dll|cnf|tgz|sha1"
         + r"|thmx|mso|arff|rtf|jar|csv"
-        + r"|rm|smil|wmv|swf|wma|zip|rar|gz)$", parsed.path.lower())
+        + r"|rm|smil|wmv|swf|wma|zip|rar|gz"
+        + r"|mpg|py|h|cp|c|emacs|ppsx|lif|rle|nb|tsv|htm|odc|bib|pps|Z|ma)$", parsed.path.lower())
 

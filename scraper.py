@@ -5,9 +5,18 @@ from validate_html_helpers import *
 from report_helpers import *
 
 
-traps = ["redirect", "?entry_point", "timeline", "/r.php", "?version=", 
-"~eppstein/pix", "login", "calendar", "eppstein/pix", "/events/", "ngs.ics", "/doku", "mediamanager.php", 
-"?action=diff", "?format=", "week", "month", "year"]
+traps = [
+    "https://grape.ics.uci.edu/wiki/public/timeline?",
+    "https://grape.ics.uci.edu/wiki/public/wiki",
+    "https://grape.ics.uci.edu/wiki/asterix",
+    "https://ics.uci.edu/events/category/student-experience/day",
+    "https://grape.ics.uci.edu/wiki/public/zip-attachment",
+    "https://isg.ics.uci.edu/wp-login.php",
+    "http://mlphysics.ics.uci.edu/data",
+    "https://ics.uci.edu/events/category/student-experience/list/?tribe-bar-date",
+    "https://isg.ics.uci.edu/events",
+    "https://grape.ics.uci.edu/wiki/public/raw-attachment"
+]
 
 
 def scraper(url, resp):
@@ -37,6 +46,7 @@ def extract_next_links(url, resp):
     report_uci_subdomain(url)
 
 
+    if page_too_similar(words): return []
     if page_too_large(resp): return []
     if page_low_content(resp, soup, words): return []
     
@@ -83,8 +93,9 @@ STOP_WORDS = {
     'until', 'up', 'very', 'was', "wasn't", 'we', "we'd", "we'll", "we're", "we've", 'were', "weren't", 
     'what', "what's", 'when', "when's", 'where', "where's", 'which', 'while', 'who', "who's", 'whom', 
     'why', "why's", 'with', "won't", 'would', "wouldn't", 'you', "you'd", "you'll", "you're", "you've", 
-    'your', 'yours', 'yourself', 'yourselves'
+    'your', 'yours', 'yourself', 'yourselves', "will", "can"
 }
+
 
 def clean_words(words):
     cleaned_words = []
