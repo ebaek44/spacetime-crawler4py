@@ -9,10 +9,12 @@ from report_helpers import write_report
 
 
 class Worker(Thread):
-    def __init__(self, worker_id, config, frontier):
+    def __init__(self, worker_id, config, frontier, polite = None):
         self.logger = get_logger(f"Worker-{worker_id}", "Worker")
         self.config = config
         self.frontier = frontier
+        # Politness worker (optional)
+        self.pw = polite
         # basic check for requests in scraper
         assert {getsource(scraper).find(req) for req in {"from requests import", "import requests"}} == {-1}, "Do not use requests in scraper.py"
         assert {getsource(scraper).find(req) for req in {"from urllib.request import", "import urllib.request"}} == {-1}, "Do not use urllib.request in scraper.py"
@@ -24,6 +26,16 @@ class Worker(Thread):
             if not tbd_url:
                 self.logger.info("Frontier is empty. Stopping Crawler.")
                 break
+            # check if there is a politeness worker
+            if self.pw:
+                # If the url has already been seen continue to the next iteration
+                if self.pw.seen_url(tbd_url):
+                    self.frontier.mark_url_complete(tbd_url)
+                    continue
+                
+                # Else respect the politeness delay
+                self.pw.politeness_delay(tbd_url)
+
             resp = download(tbd_url, self.config, self.logger)
             self.logger.info(
                 f"Downloaded {tbd_url}, status <{resp.status}>, "

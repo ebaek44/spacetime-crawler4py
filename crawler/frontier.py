@@ -10,7 +10,7 @@ original_connect = sqlite3.connect
 sqlite3.connect = lambda *args, **kwargs: original_connect(*args, check_same_thread=False, **kwargs)
 
 class Frontier(object):
-    def __init__(self, config, restart):
+    def __init__(self, config, restart, seed_ind = -1):
         self.logger = get_logger("FRONTIER")
         self.config = config
         self.to_be_downloaded = list()
@@ -26,17 +26,28 @@ class Frontier(object):
             self.logger.info(
                 f"Found save file {self.config.save_file}, deleting it.")
             os.remove(self.config.save_file)
+            
         # Load existing save file, or create one if it does not exist.
         self.save = shelve.open(self.config.save_file)
-        if restart:
-            for url in self.config.seed_urls:
-                self.add_url(url)
-        else:
-            # Set the frontier state with contents of save file.
-            self._parse_save_file()
-            if not self.save:
+        if seed_ind == -1:
+            if restart:
                 for url in self.config.seed_urls:
                     self.add_url(url)
+            else:
+                # Set the frontier state with contents of save file.
+                self._parse_save_file()
+                if not self.save:
+                    for url in self.config.seed_urls:
+                        self.add_url(url)
+        else:
+            if restart:
+                self.add_url(self.config.seed_urls[seed_ind])
+            else:
+                # Set the frontier state with contents of save file.
+                self._parse_save_file()
+                if not self.save:
+                    self.add_url(self.config.seed_urls[seed_ind])
+
     def _parse_save_file(self):
         ''' This function can be overridden for alternate saving techniques. '''
         total_count = len(self.save)
@@ -53,6 +64,7 @@ class Frontier(object):
             return self.to_be_downloaded.pop()
         except IndexError:
             return None
+
     def add_url(self, url):
         with self.save_lock:  # ADD THIS LINE
             url = normalize(url)
