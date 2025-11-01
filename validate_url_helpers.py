@@ -44,5 +44,6 @@ def base_validates(parsed):
         + r"|data|dat|exe|bz2|tar|msi|bin|7z|psd|dmg|iso"
         + r"|epub|dll|cnf|tgz|sha1"
         + r"|thmx|mso|arff|rtf|jar|csv"
-        + r"|rm|smil|wmv|swf|wma|zip|rar|gz)$", parsed.path.lower())
+        + r"|rm|smil|wmv|swf|wma|zip|rar|gz)
+        + r"|mpg|py|h|cp|c|emacs|ppsx|lif|rle|nb|tsv|htm|odc|bib|pps|Z|ma)$", parsed.path.lower())
 
