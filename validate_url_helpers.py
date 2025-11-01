@@ -1,6 +1,5 @@
 import re
 from urllib.parse import urlparse
-from report_helpers import repeated_paths
 
 def is_trap(url, traps):
     # if a pattern of url keeps showing up over 100 times, its probably a trap.
@@ -8,7 +7,7 @@ def is_trap(url, traps):
     # need to run to see the numbers
     # do i do only the first path or second path too?
 
-    if any(domain == url for domain in traps):
+    if any(domain in url for domain in traps):
         return True
 
     return False
@@ -44,6 +43,6 @@ def base_validates(parsed):
         + r"|data|dat|exe|bz2|tar|msi|bin|7z|psd|dmg|iso"
         + r"|epub|dll|cnf|tgz|sha1"
         + r"|thmx|mso|arff|rtf|jar|csv"
-        + r"|rm|smil|wmv|swf|wma|zip|rar|gz)
+        + r"|rm|smil|wmv|swf|wma|zip|rar|gz"
         + r"|mpg|py|h|cp|c|emacs|ppsx|lif|rle|nb|tsv|htm|odc|bib|pps|Z|ma)$", parsed.path.lower())
 

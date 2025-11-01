@@ -46,6 +46,7 @@ def extract_next_links(url, resp):
     report_uci_subdomain(url)
 
 
+    if page_too_similar(words): return []
     if page_too_large(resp): return []
     if page_low_content(resp, soup, words): return []
     
@@ -94,6 +95,7 @@ STOP_WORDS = {
     'why', "why's", 'with', "won't", 'would', "wouldn't", 'you', "you'd", "you'll", "you're", "you've", 
     'your', 'yours', 'yourself', 'yourselves', "will", "can"
 }
+
 
 def clean_words(words):
     cleaned_words = []
