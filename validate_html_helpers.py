@@ -9,12 +9,12 @@ def page_low_content(resp, soup, words):
         return True
     
     # page not enough words
-    if len(words) < 80 or len(str(soup)) < 500:
+    if len(words) < 50
         add_little_information(resp)
         print('too small, less than 50 words')
         return True
-    elif len(resp.raw_response.content) > 1000000:
-        if len(words) < 500:
+    elif len(resp.raw_response.content) > MAX_FILE_SIZE_BYTES:
+        if len(words) < 300:
             print('too large file and not enough words')
             add_little_information(resp)
             return True
