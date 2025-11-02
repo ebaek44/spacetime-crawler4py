@@ -41,6 +41,10 @@ def page_too_large(resp):
 def is_blocked_pattern(url):
     pattern = get_pattern_from_url(url)
     stats = little_information[pattern]
+
+    # threshold is 50
+    if stats['total'] < 50:
+        return False
     
     # block if ration of low to total is too high
     ratio = stats['low'] / stats['total']
