@@ -37,7 +37,10 @@ def extract_next_links(url, resp):
     except:
         return []
     links = []
-    text = soup.get_text()
+    text = soup.get_text(separator=' ', strip=True)
+    text = re.sub(r'\s+', ' ', text).strip()
+    words = text.split()
+
     words = text.split() if text else []
     cleaned_words = clean_words(words)
 
