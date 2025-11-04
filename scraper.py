@@ -6,9 +6,9 @@ from report_helpers import *
 
 
 traps = [
-    "https://grape.ics.uci.edu/wiki/public/timeline?",
-    "https://grape.ics.uci.edu/wiki/public/wiki",
+    "https://grape.ics.uci.edu/wiki/public/timeline",
     "https://grape.ics.uci.edu/wiki/asterix",
+    "https://grape.ics.uci.edu/wiki/public/wiki",
     "https://ics.uci.edu/events/category/student-experience/day",
     "https://grape.ics.uci.edu/wiki/public/zip-attachment",
     "https://isg.ics.uci.edu/wp-login.php",
@@ -31,6 +31,9 @@ def extract_next_links(url, resp):
         print("Error:", resp.error)
         return []
     
+    content = resp.raw_response.content
+    is_pdf = content[:4] == b'%PDF'
+    
     # extract text from html
     try:
         soup = BeautifulSoup(resp.raw_response.content, 'html.parser')
@@ -45,8 +48,10 @@ def extract_next_links(url, resp):
     cleaned_words = clean_words(words)
 
     # create the report before checks
+
     unique_urls.add(url)
-    report_highest_words(url, words)
+    if not is_pdf:
+        report_highest_words(url, words)
     report_common_words(cleaned_words)
     report_uci_subdomain(url)
 

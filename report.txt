@@ -1,199 +1,199 @@
-Unique pages found: 8098 
+Unique pages found: 7793 
  
  
-Highest words: 143642 from http://www.ics.uci.edu/~shantas/publications/20-secret-sharing-aggregation-TKDE-shantanu
+Highest words: 82350 from http://www.ics.uci.edu/~seal/projects/deldroid/ArchManager.apk
  
  
 Highest 100 Words:
-1. research: 26411
-2. student: 16261
-3. software: 15668
-4. information: 13990
-5. may: 13127
-6. engineering: 12668
-7. data: 12667
-8. computer: 12167
-9. informatics: 11859
-10. students: 11790
-11. graduate: 11375
-12. undergraduate: 11121
-13. phd: 10884
-14. university: 10780
-15. june: 10690
-16. september: 10348
-17. july: 10136
-18. bs: 9697
-19. learning: 9685
-20. january: 9529
-21. march: 9513
-22. april: 9491
-23. department: 9487
-24. august: 9415
-25. science: 9357
-26. november: 9256
-27. december: 9250
-28. news: 9185
-29. february: 9083
-30. october: 8734
-31. irvine: 8602
-32. projects: 8540
-33. design: 8532
-34. uci: 8389
-35. courses: 8198
-36. people: 8092
-37. ics: 7983
-38. us: 7930
-39. books: 7462
-40. contact: 7387
-41. search: 7210
-42. ramesh: 7181
-43. one: 7149
-44. systems: 7146
-45. new: 6865
-46. profiles: 6826
-47. eppstein: 6824
-48. time: 6721
-49. support: 6639
-50. past: 6586
-51. algorithms: 6493
-52. computing: 6446
-53. process: 6241
-54. application: 6199
-55. alumni: 6115
-56. uc: 5921
-57. faculty: 5871
-58. current: 5846
-59. also: 5806
-60. graph: 5745
-61. vision: 5670
-62. set: 5607
-63. using: 5482
-64. ms: 5318
-65. events: 5296
-66. machine: 5260
-67. read: 5247
-68. spotlights: 5242
-69. post: 5235
-70. work: 5235
-71. management: 5193
-72. conference: 5191
-73. california: 5120
-74. master: 5083
-75. groups: 5080
-76. center: 5058
-77. paper: 5056
-78. degrees: 4997
-79. program: 4880
-80. policies: 4843
-81. school: 4690
-82. publications: 4640
-83. applications: 4591
-84. game: 4563
-85. community: 4561
-86. professor: 4537
-87. pp: 4519
-88. future: 4496
-89. use: 4443
-90. jain: 4382
-91. privacy: 4370
-92. models: 4286
-93. seminar: 4229
-94. technology: 4179
-95. project: 4175
-96. series: 4157
-97. home: 4078
-98. insert: 4061
-99. wics: 4037
-100. two: 4009
+1. research: 24718
+2. student: 15669
+3. software: 15093
+4. information: 13064
+5. may: 12895
+6. engineering: 12106
+7. data: 11630
+8. informatics: 11549
+9. students: 11185
+10. computer: 10998
+11. graduate: 10943
+12. undergraduate: 10750
+13. june: 10598
+14. phd: 10301
+15. september: 10284
+16. july: 10084
+17. university: 9881
+18. january: 9458
+19. bs: 9426
+20. april: 9421
+21. march: 9416
+22. august: 9331
+23. december: 9170
+24. november: 9164
+25. february: 9014
+26. department: 8897
+27. news: 8733
+28. october: 8591
+29. science: 8370
+30. learning: 8310
+31. design: 8203
+32. projects: 8163
+33. uci: 8115
+34. irvine: 8024
+35. ics: 7783
+36. courses: 7695
+37. people: 7682
+38. us: 7552
+39. contact: 7178
+40. books: 6965
+41. one: 6860
+42. eppstein: 6816
+43. profiles: 6644
+44. search: 6623
+45. time: 6505
+46. new: 6493
+47. systems: 6452
+48. support: 6418
+49. algorithms: 6219
+50. ramesh: 6143
+51. application: 5998
+52. past: 5998
+53. process: 5988
+54. alumni: 5881
+55. graph: 5675
+56. computing: 5659
+57. uc: 5631
+58. set: 5547
+59. faculty: 5522
+60. also: 5507
+61. current: 5239
+62. vision: 5162
+63. ms: 5153
+64. using: 5153
+65. spotlights: 5080
+66. conference: 5017
+67. post: 5015
+68. groups: 4944
+69. master: 4928
+70. management: 4910
+71. events: 4883
+72. paper: 4863
+73. read: 4855
+74. work: 4823
+75. degrees: 4818
+76. program: 4721
+77. policies: 4716
+78. center: 4621
+79. california: 4611
+80. publications: 4562
+81. pp: 4503
+82. game: 4428
+83. community: 4422
+84. school: 4398
+85. machine: 4373
+86. applications: 4275
+87. future: 4264
+88. privacy: 4250
+89. use: 4182
+90. project: 4068
+91. insert: 4061
+92. professor: 4016
+93. wics: 4014
+94. course: 3990
+95. series: 3945
+96. home: 3925
+97. code: 3914
+98. graphs: 3913
+99. technology: 3904
+100. seminar: 3894
 
 Subdomains sorted with frequency: 
 
-www.ics.uci.edu: 2448 
-wics.ics.uci.edu: 1260 
-ngs.ics.uci.edu: 1230 
-www.informatics.uci.edu: 1101 
-cml.ics.uci.edu: 236 
-vision.ics.uci.edu: 211 
-archive.ics.uci.edu: 181 
-isg.ics.uci.edu: 142 
-duttgroup.ics.uci.edu: 129 
-www.stat.uci.edu: 125 
-futurehealth.ics.uci.edu: 110 
-acoi.ics.uci.edu: 110 
-computableplant.ics.uci.edu: 63 
-seal.ics.uci.edu: 49 
-icde2023.ics.uci.edu: 46 
-emj.ics.uci.edu: 42 
-cloudberry.ics.uci.edu: 41 
-jgarcia.ics.uci.edu: 40 
-mailman.ics.uci.edu: 36 
-dynamo.ics.uci.edu: 33 
-dgillen.ics.uci.edu: 30 
-cybert.ics.uci.edu: 27 
-flamingo.ics.uci.edu: 26 
-www-db.ics.uci.edu: 25 
-industryshowcase.ics.uci.edu: 23 
-mhcid.ics.uci.edu: 21 
-cert.ics.uci.edu: 16 
-code.ics.uci.edu: 13 
-mcs.ics.uci.edu: 12 
-cs.ics.uci.edu: 12 
-mswe.ics.uci.edu: 11 
-hobbes.ics.uci.edu: 11 
-cyberclub.ics.uci.edu: 11 
-statistics-stage.ics.uci.edu: 10 
-cwicsocal18.ics.uci.edu: 10 
-chenli.ics.uci.edu: 10 
-unite.ics.uci.edu: 10 
-archive-beta.ics.uci.edu: 9 
-insite.ics.uci.edu: 9 
-hai.ics.uci.edu: 8 
-mds.ics.uci.edu: 7 
-graphics.ics.uci.edu: 7 
-nalini.ics.uci.edu: 7 
-sherlock.ics.uci.edu: 7 
-asterix.ics.uci.edu: 7 
-scale.ics.uci.edu: 7 
-selectpro.proteomics.ics.uci.edu: 7 
-student-council.ics.uci.edu: 6 
 accessibility.ics.uci.edu: 6 
-summeracademy.ics.uci.edu: 6 
-circadiomics.ics.uci.edu: 6 
-hpi.ics.uci.edu: 5 
-tutoring.ics.uci.edu: 5 
-oai.ics.uci.edu: 5 
-ds4all.ics.uci.edu: 5 
-i-sensorium.ics.uci.edu: 5 
-courselisting.ics.uci.edu: 4 
-luci.ics.uci.edu: 4 
-create.ics.uci.edu: 4 
-scratch.proteomics.ics.uci.edu: 4 
-cdb.ics.uci.edu: 4 
-stairs.ics.uci.edu: 4 
-evoke.ics.uci.edu: 3 
-fr.ics.uci.edu: 3 
-mupro.proteomics.ics.uci.edu: 3 
-betapro.proteomics.ics.uci.edu: 3 
-tad.ics.uci.edu: 2 
-informatics.ics.uci.edu: 2 
-psearch.ics.uci.edu: 2 
-hack.ics.uci.edu: 2 
-www.cs.uci.edu: 1 
-ugradforms.ics.uci.edu: 1 
-intranet.ics.uci.edu: 1 
-malek.ics.uci.edu: 1 
-www.informatics.ics.uci.edu: 1 
-graphmod.ics.uci.edu: 1 
-xtune.ics.uci.edu: 1 
-tastier.ics.uci.edu: 1 
-ipubmed.ics.uci.edu: 1 
-wiki.ics.uci.edu: 1 
-motifmap.ics.uci.edu: 1 
-pepito.proteomics.ics.uci.edu: 1 
-mlphysics.ics.uci.edu: 1 
-statconsulting.ics.uci.edu: 1 
-iasl.ics.uci.edu: 1 
-mdogucu.ics.uci.edu: 1 
+acoi.ics.uci.edu: 112 
 aiclub.ics.uci.edu: 1 
+archive-beta.ics.uci.edu: 9 
+archive.ics.uci.edu: 180 
+asterix.ics.uci.edu: 7 
+betapro.proteomics.ics.uci.edu: 3 
+cdb.ics.uci.edu: 4 
+cert.ics.uci.edu: 16 
+chenli.ics.uci.edu: 10 
+circadiomics.ics.uci.edu: 6 
+cloudberry.ics.uci.edu: 41 
+cml.ics.uci.edu: 171 
+code.ics.uci.edu: 13 
+computableplant.ics.uci.edu: 63 
+courselisting.ics.uci.edu: 4 
+create.ics.uci.edu: 4 
+cs.ics.uci.edu: 12 
+cwicsocal18.ics.uci.edu: 10 
+cyberclub.ics.uci.edu: 11 
+cybert.ics.uci.edu: 27 
+dgillen.ics.uci.edu: 30 
+ds4all.ics.uci.edu: 5 
+duttgroup.ics.uci.edu: 127 
+dynamo.ics.uci.edu: 9 
+emj.ics.uci.edu: 41 
+evoke.ics.uci.edu: 2 
+flamingo.ics.uci.edu: 20 
+fr.ics.uci.edu: 3 
+futurehealth.ics.uci.edu: 110 
+graphics.ics.uci.edu: 7 
+graphmod.ics.uci.edu: 1 
+hack.ics.uci.edu: 2 
+hai.ics.uci.edu: 7 
+hobbes.ics.uci.edu: 11 
+hpi.ics.uci.edu: 5 
+i-sensorium.ics.uci.edu: 5 
+iasl.ics.uci.edu: 1 
+icde2023.ics.uci.edu: 46 
+industryshowcase.ics.uci.edu: 23 
+informatics.ics.uci.edu: 2 
+insite.ics.uci.edu: 9 
+intranet.ics.uci.edu: 1 
+ipubmed.ics.uci.edu: 1 
+isg.ics.uci.edu: 141 
+jgarcia.ics.uci.edu: 40 
+luci.ics.uci.edu: 4 
+mailman.ics.uci.edu: 36 
+malek.ics.uci.edu: 1 
+mcs.ics.uci.edu: 12 
+mdogucu.ics.uci.edu: 1 
+mds.ics.uci.edu: 7 
+mhcid.ics.uci.edu: 20 
+mlphysics.ics.uci.edu: 1 
+motifmap.ics.uci.edu: 1 
+mswe.ics.uci.edu: 11 
+mupro.proteomics.ics.uci.edu: 3 
+nalini.ics.uci.edu: 7 
+ngs.ics.uci.edu: 1082 
+oai.ics.uci.edu: 5 
+pepito.proteomics.ics.uci.edu: 1 
+psearch.ics.uci.edu: 1 
 redmiles.ics.uci.edu: 1 
 riscit.ics.uci.edu: 1 
+scale.ics.uci.edu: 7 
+scratch.proteomics.ics.uci.edu: 4 
+seal.ics.uci.edu: 49 
+selectpro.proteomics.ics.uci.edu: 7 
+sherlock.ics.uci.edu: 7 
+stairs.ics.uci.edu: 4 
+statconsulting.ics.uci.edu: 1 
+statistics-stage.ics.uci.edu: 10 
+student-council.ics.uci.edu: 6 
+summeracademy.ics.uci.edu: 6 
+tad.ics.uci.edu: 2 
+tastier.ics.uci.edu: 1 
+tutoring.ics.uci.edu: 5 
+ugradforms.ics.uci.edu: 1 
+unite.ics.uci.edu: 10 
+vision.ics.uci.edu: 210 
+wics.ics.uci.edu: 1259 
+wiki.ics.uci.edu: 1 
+www-db.ics.uci.edu: 25 
+www.cs.uci.edu: 1 
+www.ics.uci.edu: 2443 
+www.informatics.ics.uci.edu: 1 
+www.informatics.uci.edu: 1073 
+www.stat.uci.edu: 105 
+xtune.ics.uci.edu: 1 

@@ -23,7 +23,7 @@ def write_report():
             f.write(f"{rank}. {word}: {freq}\n")
 
         # subdomains
-        sorted_subdomains = sorted(list(uci_subdomains.items()), key=lambda x : -x[1])
+        sorted_subdomains = sorted(list(uci_subdomains.items()), key=lambda x : x[0])
         subdomain_result = []
         for subdomain in sorted_subdomains:
             subdomain_result.append((subdomain[0], subdomain[1]))
@@ -31,7 +31,6 @@ def write_report():
         for subdomain in subdomain_result:
             f.write(f"{subdomain[0]}: {subdomain[1]} \n")
             
-
 
 def report_highest_words(url, words):
     # always keep track of highest word count of html website

@@ -75,6 +75,25 @@ def get_pattern_from_url(url):
 
 # duplicate check code 
 
+def hash(text):
+    result = 0
+    for i, char in enumerate(text):
+        result = result * 37 + ord(char)
+        result = result % 1000000007
+    return str(result).zfill(16)
+
+def hash2(text):
+    h = 5381 # prime long number
+    for char in text:
+        h = ((h * 33) + ord(char)) % (2**32)
+    
+    # make it look more random
+    h = h ^ (h >> 16)
+    h = h * 2654435761
+    h = h % (2**32)
+    
+    return hex(h)[2:].zfill(16)
+
 def make_ngrams(words):
     # 5 grams
     chunks = []
@@ -86,14 +105,14 @@ def make_ngrams(words):
 def randomize_ngrams(items):
     if len(items) <= 100:
         return items
-    items = sorted(items, key=lambda x: hashlib.md5(x.encode()).hexdigest())
+    items = sorted(items, key=lambda x: hash(x))
     return items[:100]
 
 def hash_chunks(chunks):
     chosen = randomize_ngrams(chunks)
     result = []
     for c in chosen:
-        hashed = hashlib.sha256(c.encode()).hexdigest()
+        hashed = hash2(c)
         result.append(hashed)
     return result
 
